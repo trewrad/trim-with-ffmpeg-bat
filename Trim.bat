@@ -103,21 +103,18 @@ IF %M%==8 GOTO Vcustom
 set /p fileName=Filename? 
 ffmpeg -hwaccel cuda -i %1 -ss !InTime! -to !OutTime!  -c:v h264_nvenc !rescale! !retime! -b:v 7M -preset slow -af aresample=async=1 "%fileName%.mp4"
 pause
-start "" "D:\Videos\Clips\H265\rewatch\highlights"
 exit
 
 :10M
 set /p fileName=Filename? 
 ffmpeg -hwaccel cuda -i %1  -ss !InTime! -to !OutTime! -af "aresample=async=1" -c:v h264_nvenc !rescale! !retime! -b:v  10M -preset slow "!fileName!.mp4"
 pause
-start "" "D:\Videos\Clips\H265\rewatch\highlights"
 exit
 
 :30M
 set /p fileName=Filename? 
 ffmpeg -hwaccel cuda -i %1 -ss !InTime! -to !OutTime! -c:v h264_nvenc !rescale! !retime! -b:v 30M -preset slow -af aresample=async=1 "%fileName%.mp4"
 pause
-start "" "D:\Videos\Clips\H265\rewatch\highlights"
 exit
 
 :custom
@@ -125,7 +122,6 @@ set /p fileName=Filename?
 set /p customRate=Specify Custom Bitrate Value: 
 ffmpeg -hwaccel cuda -i %1 -ss !InTime! -to !OutTime! -c:v h264_nvenc !rescale! !retime! -b:v !customRate!M -preset slow -af aresample=async=1 "%fileName%.mp4"
 pause
-start "" "D:\Videos\Clips\H265\rewatch\highlights"
 exit
 
 :V4M
